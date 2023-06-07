@@ -1,16 +1,12 @@
 <template>
-  <div class="container">
-  <Login></Login>
+  <div id="app">
+    <router-view />
   </div>
 </template>
 
 <script>
-import Login from "./components/Login.vue";
 export default {
   name: "App",
-  components:{
-    Login
-  },
   data() {
     return {
     
@@ -26,7 +22,12 @@ export default {
 </script>
 
 <style scoped>
-  .container {
+  #app {
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
    height: 100vh;
   }
 </style>

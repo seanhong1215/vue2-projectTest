@@ -41,10 +41,9 @@ export default {
   name: "login",
   data() {
     return {
- 
       validCredentials: {
-        username: "lightscope",
-        password: "lightscope"
+        username: "138999888",
+        password: "138999888"
       },
       model: {
         username: "",
@@ -89,6 +88,7 @@ export default {
       if (!valid) {
         return;
       } 
+      console.log(valid)
       this.loading = true;
       await this.simulateLogin();
       this.loading = false;
@@ -96,11 +96,36 @@ export default {
         this.model.username === this.validCredentials.username &&
         this.model.password === this.validCredentials.password
       ) {
+        validateAge(this.model.username)
         this.$message.success("Login successfull");
       } else {
         this.$message.error("Username or password is invalid");
       }
+    },
+    validateAge(idNumber){
+      // idNumber = this.model.username;
+      console.log(idNumber)
+       // 提取出生年月日信息
+        const birthday = idNumber.substring(6, 14);
+        
+        // 將出生年月日轉換為日期格式
+        const year = parseInt(birthday.substring(0, 4));
+        const month = parseInt(birthday.substring(4, 6));
+        const day = parseInt(birthday.substring(6, 8));
+        const birthDate = new Date(year, month - 1, day);
+        
+        // 計算年齡
+        const today = new Date();
+        const age = today.getFullYear() - birthDate.getFullYear();
+        
+        // 過濾結果
+        if (age <= 20 || age >= 70) {
+          return false; // 年齡不在許可範圍內
+        }
+        
+        return true; // 年齡在許可範圍內
     }
+
   }
 };
 </script>
