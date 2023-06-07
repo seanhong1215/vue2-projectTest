@@ -1,6 +1,7 @@
 <template>
     <div class="layouts">
     <validLogin></validLogin>
+      <p>專案001</p>
     </div>
   </template>
   
